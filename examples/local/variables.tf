@@ -4,3 +4,7 @@ variable "app_role"          { type = string }
 variable "readonly_role"     { type = string }
 variable "vault_mount"       { type = string }
 variable "vault_path_prefix" { type = string }
+variable "db_schema" {
+  type    = string
+  default = "public"
+}

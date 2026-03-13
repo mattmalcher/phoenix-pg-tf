@@ -36,7 +36,10 @@ services:
     profiles:
       - phoenix
     env_file:
-      - .env
+      - path: .env
+        required: false
+    environment:
+      PHOENIX_SQL_DATABASE_SCHEMA: phoenix
     ports:
       - "6006:6006"
     depends_on:

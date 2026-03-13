@@ -37,10 +37,10 @@ phoenix-start:
 	@echo "Wrote .env with PHOENIX_SQL_DATABASE_URL"
 	$(COMPOSE) --profile phoenix up -d phoenix
 
-## List tables in the phoenix database (sorted by schema + name)
+## List tables in the phoenix database (user schemas only)
 psql-tables:
 	$(COMPOSE) exec postgres psql -U postgres -d phoenix -c \
-	    "\dt public.*"
+	    "SELECT schemaname, tablename, tableowner FROM pg_tables WHERE schemaname NOT IN ('pg_catalog','information_schema','pg_toast') ORDER BY schemaname, tablename;"
 
 ## Stop all containers and remove volumes
 down:

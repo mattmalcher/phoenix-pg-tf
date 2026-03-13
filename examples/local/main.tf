@@ -42,6 +42,7 @@ module "phoenix_db" {
 
   vault_mount       = var.vault_mount
   vault_path_prefix = var.vault_path_prefix
+  db_schema         = var.db_schema
 }
 
 output "database_name"       { value = module.phoenix_db.database_name }
